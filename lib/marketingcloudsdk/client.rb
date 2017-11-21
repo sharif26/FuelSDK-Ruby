@@ -96,17 +96,21 @@ module MarketingCloudSDK
 		def initialize(params={}, debug=false)
 			@refresh_mutex = Mutex.new
 			self.debug = debug
+			self.request_token_url = params['request_token_url'] ? params['request_token_url'] : 'https://auth.exacttargetapis.com/v1/requestToken'
+
 			client_config = params['client']
 			if client_config
-        self.id = client_config["id"]
-        self.secret = client_config["secret"]
-        self.signature = client_config["signature"]
+				self.id = client_config["id"]
+				self.secret = client_config["secret"]
+				self.signature = client_config["signature"]
+				if client_config["request_token_url"]
+					self.request_token_url = client_config["request_token_url"]
+				end
 			end
 
-      self.request_token_url = params['request_token_url'] ? params['request_token_url'] : 'https://auth.exacttargetapis.com/v1/requestToken'
+	      	# self.request_token_url = params['request_token_url'] ? params['request_token_url'] : 'https://auth.exacttargetapis.com/v1/requestToken'
 			self.jwt = params['jwt'] if params['jwt']
 			self.refresh_token = params['refresh_token'] if params['refresh_token']
-
 			self.wsdl = params["defaultwsdl"] if params["defaultwsdl"]
 		end
 

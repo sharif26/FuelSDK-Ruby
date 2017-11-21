@@ -6,8 +6,8 @@ require 'marketingcloudsdk/version'
 Gem::Specification.new do |spec|
 	spec.name          = "marketingcloudsdk"
 	spec.version       = MarketingCloudSDK::VERSION
-	spec.authors       = ["Ashok Magar"]
-	spec.email         = ["amagar@salesforce.com"]
+	spec.authors       = ["MC SDK"]
+	spec.email         = ["noreply@salesforce.com"]
 	spec.description   = %q{API wrapper for SOAP and REST API with Salesforce Marketing Cloud (ExactTarget)}
 	spec.summary       = %q{Fuel Client Library for Ruby}
 	spec.homepage      = "https://github.com/ExactTarget/FuelSDK-Ruby"
