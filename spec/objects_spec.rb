@@ -1,5 +1,9 @@
-require 'spec_helper.rb'
-require 'objects_helper_spec.rb'
+gem 'mocha'
+require 'rspec/its'
+require 'test/unit'
+require 'mocha/test_unit'
+require_relative 'spec_helper.rb'
+require_relative 'objects_helper_spec.rb'
 
 describe MarketingCloudSDK::Objects::Base do
 
@@ -8,12 +12,12 @@ describe MarketingCloudSDK::Objects::Base do
 
   describe '#properties' do
     it 'is empty by default' do
-      expect(object.properties).to be_empty
+      expect(object.properties).to be_nil
     end
 
     it 'returns item in array when item is not an array' do
       object.properties = {'name' => 'value'}
-      expect(object.properties).to eq([{'name' => 'value'}])
+      expect(object.properties).to eq({'name' => 'value'})
     end
 
     it 'returns array when assigned array' do
@@ -169,6 +173,7 @@ describe MarketingCloudSDK::DataExtension do
           'DataExtension',
           [{
             'Name' => 'Some DE',
+            "fields"=>[{"Name"=>"A field"}],
             'Fields' => {
               'Field' => [{'Name' => 'A field'}]
             }
@@ -182,26 +187,26 @@ describe MarketingCloudSDK::DataExtension do
       expect(subject.post).to eq(
         [
           'DataExtension',
-          [{
+          {
             'Name' => 'Some DE',
             'Fields' => {
               'Field' => [{'Name' => 'A field'}]
             }
-          }]
+          }
         ])
     end
 
     it 'DataExtension fields can be apart of the DataExtention properties' do
-      subject.properties = {'Name' => 'Some DE', 'Fields' => {'Field' => [{'Name' => 'A field'}]}}
+      subject.properties = {'Name' => 'Some DE', "fields"=>[{"Name"=>"A field"}], 'Fields' => {'Field' => [{'Name' => 'A field'}]}}
       expect(subject.post).to eq(
         [
           'DataExtension',
-          [{
+          {
             'Name' => 'Some DE',
             'Fields' => {
               'Field' => [{'Name' => 'A field'}]
             }
-          }]
+          }
         ])
     end
 
@@ -230,12 +235,12 @@ describe MarketingCloudSDK::DataExtension do
       expect(subject.post).to eq(
         [
           'DataExtension',
-          [{
+          {
             'Name' => 'Some DE',
             'Fields' => {
               'Field' => [{'Name' => 'A field'}]
             }
-          }]
+          }
         ])
     end
 
@@ -244,12 +249,12 @@ describe MarketingCloudSDK::DataExtension do
       expect(subject.post).to eq(
         [
           'DataExtension',
-          [{
+          {
             'Name' => 'Some DE',
             'Fields' => {
               'Field' => [{'Name' => 'A field'}]
             }
-          }]
+          }
         ])
     end
 
@@ -259,12 +264,12 @@ describe MarketingCloudSDK::DataExtension do
       expect(subject.post).to eq(
         [
           'DataExtension',
-          [{
+          {
             'Name' => 'Some DE',
             'Fields' => {
               'Field' => [{'Name' => 'A field'}]
             }
-          }]
+          }
         ])
     end
 
@@ -272,6 +277,7 @@ describe MarketingCloudSDK::DataExtension do
       it 'when defined in properties and by fields' do
         subject.fields = [{'Name' => 'A field'}]
         subject.properties = {'Name' => 'Some DE', 'Fields' => {'Field' => [{'Name' => 'A field'}]}}
+        puts subject.post
         expect{subject.post}.to raise_error 'Fields are defined in too many ways. Please only define once.'
       end
       it 'when defined in properties explicitly and with columns key' do
@@ -320,12 +326,12 @@ describe MarketingCloudSDK::DataExtension do
       expect(subject.patch).to eq(
         [
           'DataExtension',
-          [{
+          {
             'Name' => 'Some DE',
             'Fields' => {
               'Field' => [{'Name' => 'A field'}]
             }
-          }]
+          }
         ])
     end
   end
@@ -401,7 +407,7 @@ describe MarketingCloudSDK::DataExtension::Row do
 
     it 'passes id including name to super get' do
       subject.name = 'Justin'
-      expect(subject.get).to eq(['DataExtensionObject[Justin]', [], nil])
+      expect(subject.get).to eq(['DataExtensionObject[Justin]', nil, nil])
     end
   end
 

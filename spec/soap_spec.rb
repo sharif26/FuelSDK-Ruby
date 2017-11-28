@@ -1,4 +1,5 @@
-require 'spec_helper'
+require 'rspec/its'
+require_relative 'spec_helper'
 
 describe MarketingCloudSDK::Soap do
 
@@ -29,7 +30,7 @@ describe MarketingCloudSDK::Soap do
   it { should respond_to(:package_folders) }
   it { should respond_to(:package_folders=) }
 
-  its(:debug) { should be_false }
+  its(:debug) { should be_falsey }
   its(:wsdl) { should eq 'https://webservice.exacttarget.com/etframework.wsdl' }
 
   describe '#header' do
@@ -76,7 +77,7 @@ describe MarketingCloudSDK::Soap do
       it 'formats soap :create message for single object' do
         expect(subject.soap_post 'Subscriber', 'EmailAddress' => 'test@fuelsdk.com' ).to eq([:create,
           {
-            'Objects' => [{'EmailAddress' => 'test@fuelsdk.com'}],
+            'Objects' => {'EmailAddress' => 'test@fuelsdk.com'},
             :attributes! => {'Objects' => {'xsi:type' => ('tns:Subscriber')}}
           }])
       end
@@ -90,7 +91,7 @@ describe MarketingCloudSDK::Soap do
       end
 
       it 'formats soap :create message for single object with an attribute' do
-        expect(subject.soap_post 'Subscriber', {'EmailAddress' => 'test@fuelsdk.com', 'Attributes'=> [{'Name'=>'First Name', 'Value'=>'first'}]}).to eq([:create,
+        expect(subject.soap_post 'Subscriber', [{'EmailAddress' => 'test@fuelsdk.com', 'Attributes'=> [{'Name'=>'First Name', 'Value'=>'first'}]}]).to eq([:create,
           {
             'Objects' => [{
               'EmailAddress' => 'test@fuelsdk.com',
@@ -101,8 +102,8 @@ describe MarketingCloudSDK::Soap do
       end
 
       it 'formats soap :create message for single object with multiple attributes' do
-        expect(subject.soap_post 'Subscriber', {'EmailAddress' => 'test@fuelsdk.com',
-          'Attributes'=> [{'Name'=>'First Name', 'Value'=>'first'}, {'Name'=>'Last Name', 'Value'=>'subscriber'}]}).to eq([:create,
+        expect(subject.soap_post 'Subscriber', [{'EmailAddress' => 'test@fuelsdk.com',
+          'Attributes'=> [{'Name'=>'First Name', 'Value'=>'first'}, {'Name'=>'Last Name', 'Value'=>'subscriber'}]}]).to eq([:create,
           {
             'Objects' => [{
               'EmailAddress' => 'test@fuelsdk.com',

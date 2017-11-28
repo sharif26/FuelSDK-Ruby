@@ -1,4 +1,4 @@
-require 'spec_helper'
+require_relative 'spec_helper'
 
 describe MarketingCloudSDK::HTTPRequest do
   let(:client) { Class.new.new.extend MarketingCloudSDK::HTTPRequest }

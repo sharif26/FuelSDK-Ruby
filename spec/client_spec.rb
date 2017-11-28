@@ -1,4 +1,4 @@
-require 'spec_helper.rb'
+require_relative 'spec_helper.rb'
 
 describe MarketingCloudSDK::Client do
 
@@ -13,12 +13,12 @@ describe MarketingCloudSDK::Client do
 
     it 'with debug=true' do
       client = MarketingCloudSDK::Client.new({}, true)
-      expect(client.debug).to be_true
+      expect(client.debug).to be_truthy
     end
 
     it 'with debug=false' do
       client = MarketingCloudSDK::Client.new({}, false)
-      expect(client.debug).to be_false
+      expect(client.debug).to be_falsey
     end
 
     it 'sets the request_token url to parameter if it exists' do
@@ -80,9 +80,9 @@ describe MarketingCloudSDK::Client do
     end
 
     it 'debug' do
-      expect(client.debug).to be_false
+      expect(client.debug).to be_falsey
       client.debug = true
-      expect(client.debug).to be_true
+      expect(client.debug).to be_truthy
     end
   end
 
@@ -131,6 +131,7 @@ describe MarketingCloudSDK::Client do
       }
 
       it 'making auth token available to client' do
+        #p 'enc=' + encoded
         client.jwt = encoded
         expect(client.auth_token).to eq 123456789
       end

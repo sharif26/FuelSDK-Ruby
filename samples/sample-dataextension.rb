@@ -1,6 +1,6 @@
 require 'marketingcloudsdk'
 require_relative 'sample_helper'
-require 'pry'
+#require 'pry'
 
 begin
 	stubObj = ET_Client.new auth

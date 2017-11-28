@@ -1,4 +1,4 @@
-require 'spec_helper'
+require_relative 'spec_helper'
 describe MarketingCloudSDK::Rest do
   let(:client) { MarketingCloudSDK::Client.new }
 
