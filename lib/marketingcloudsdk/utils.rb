@@ -36,6 +36,8 @@ USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 module MarketingCloudSDK
   module_function
+    # Formats the name, value pair
+    # @param attributes An array of attributes
     def format_name_value_pairs attributes
       attrs = []
       attributes.each do |name, value|

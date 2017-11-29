@@ -35,11 +35,14 @@ USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 =end
 
 module MarketingCloudSDK::Targeting
+  # @attr access_token The access token
   attr_accessor :access_token
+  # @attr_reader endpoint The endpoint URL
   attr_reader :endpoint
 
   include MarketingCloudSDK::HTTPRequest
 
+  # The enpoint URL.
   def endpoint
     unless @endpoint
       determine_stack

@@ -37,24 +37,31 @@ USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 require 'securerandom'
 module MarketingCloudSDK
+	# Represents Response from API call for Salesforce Marketing Cloud
 	class Response
 		# not doing accessor so user, can't update these values from response.
 		# You will see in the code some of these
 		# items are being updated via back doors and such.
 		attr_reader :code, :message, :results, :request_id, :body, :raw
 		
-		# some defaults
+		# Checks the status of the response
+		# @return true if successfull response, false otherwise
 		def success
 			@success ||= false
 		end
 		alias :success? :success
 		alias :status :success # backward compatibility
 
+		# Checks if there is more data available in the response
+		# @return true if more response available, false otherwise
 		def more
 			@more ||= false
 		end
 		alias :more? :more
 
+		# Initialize the Response object
+		# @param client Client the Client object
+		# @param raw the raw response from API call
 		def initialize raw, client
 			@client = client # keep connection with client in case we request more
 			@results = []
@@ -65,6 +72,7 @@ module MarketingCloudSDK
 			raw
 		end
 
+		# Should handle the continue feature in the child class
 		def continue
 			raise NotImplementedError
 		end
@@ -74,7 +82,8 @@ module MarketingCloudSDK
 		raise NotImplementedError
 		end
 	end
-
+	
+	# Represents Rest or Soap client for Salesforce Marketing Cloud
 	class Client
 	attr_accessor :debug, :access_token, :auth_token, :internal_token, :refresh_token,
 		:id, :secret, :signature, :package_name, :package_folders, :parent_folders, :auth_token_expiration, :request_token_url
@@ -94,6 +103,10 @@ module MarketingCloudSDK
 			self.package_name = decoded_jwt['request']['application']['package']
 		end
 
+		# Initializes a new instance of the Client class.
+		# @param Boolean debug Flag to indicate whether debug information needs to be logged. 
+		# Logging is enabled when the value is set to true and disabled when set to false.
+		# @param Hash params Hash of settings as string.</br>
 		def initialize(params={}, debug=false)
 			@refresh_mutex = Mutex.new
 			self.debug = debug

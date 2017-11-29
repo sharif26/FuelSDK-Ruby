@@ -160,11 +160,20 @@ module MarketingCloudSDK
     end
   end
 
+  # Defines a Client interface class which manages the authentication process.
+  # This is the main client class which performs authentication, obtains auth token, if expired refresh auth token.
+  # Settings/Configuration can be passed to this class during construction or set it in config.php file.
+  # Configuration passed as parameter overrides the values from the configuration file.  
   class ET_Client < ET_CreateWSDL
     attr_accessor :auth, :ready, :status, :debug, :authToken
     attr_reader :authTokenExpiration,:internalAuthToken, :wsdlLoc, :clientId,
       :clientSecret, :soapHeader, :authObj, :path, :appsignature, :stackID, :refreshKey
 
+      # Initializes a new instance of the ET_Client class.
+      # @param Boolean getWSDL Flag to indicate whether to load WSDL from source, true by default. 
+      # @param Boolean debug Flag to indicate whether debug information needs to be logged. 
+      # Logging is enabled when the value is set to true and disabled when set to false.
+      # @param Hash params Hash of settings as string.</br>
     def initialize(getWSDL = true, debug = false, params = nil)
       config = YAML.load_file("config.yaml")
       @clientId = config["clientid"]
@@ -223,6 +232,9 @@ module MarketingCloudSDK
       @debug = value
     end
 
+    # Gets the refresh token using the authentication URL.
+    #
+    # @param force Flag to indicate a force refresh of authentication token.
     def refreshToken(force = nil)
       #If we don't already have a token or the token expires within 5 min(300 seconds), get one
       if ((@authToken.nil? || Time.new + 300 > @authTokenExpiration) || force) then
@@ -276,6 +288,12 @@ module MarketingCloudSDK
       end
     end
 
+    # Add subscriber to list.
+    #
+    # @param string emailAddress Email address of the subscriber
+    # @param Array listIDs Array of list id to which the subscriber is added
+    # @param string subscriberKey Newly added subscriber key
+    # @return mixed post response object
     def AddSubscriberToList(emailAddress, listIDs, subscriberKey = nil)
       newSub = ET_Subscriber.new
       newSub.authStub = self

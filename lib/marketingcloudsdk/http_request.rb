@@ -39,13 +39,19 @@ require 'net/https'
 require 'json'
 
 module MarketingCloudSDK
-
+  # Represents HTTP Response from API call for Salesforce Marketing Cloud
   class HTTPResponse < MarketingCloudSDK::Response
+
+    # Initialize the HTTP Response object
+		# @param client Client the Client object
+    # @param raw the raw response from API call
+    # @param request the HTTP Request object
     def initialize raw, client, request
       super raw, client
       @request = request
     end
 
+    # Perform continue operation if there is more data available
     def continue
       rsp = nil
       if more?
@@ -58,6 +64,8 @@ module MarketingCloudSDK
       rsp
     end
 
+    # @param key The key which needs to be looked up in results object
+    # @return the value of the results for the specified key
     def [] key
       @results[key]
     end
