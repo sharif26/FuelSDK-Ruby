@@ -15,7 +15,6 @@ tmp
 # YARD artifacts
 .yardoc
 _yardoc
-doc/
 sample.rb
 ExactTargetWSDL.xml
 config.yaml
