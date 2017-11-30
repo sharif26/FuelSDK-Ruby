@@ -130,7 +130,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Complete the URL using the URL and properties passed.</p>
+</div></span>
   
 </li>
 
@@ -152,7 +154,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Get the URL properties from the passed url &amp; properties.</p>
+</div></span>
   
 </li>
 
@@ -174,7 +178,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Normalize the keys passed.</p>
+</div></span>
   
 </li>
 
@@ -196,7 +202,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Parse the URL and properties passed.</p>
+</div></span>
   
 </li>
 
@@ -218,7 +226,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>The self object.</p>
+</div></span>
   
 </li>
 
@@ -240,7 +250,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Method for calling a Fuel API using DELETE.</p>
+</div></span>
   
 </li>
 
@@ -262,7 +274,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Method for calling a Fuel API using GET.</p>
+</div></span>
   
 </li>
 
@@ -284,7 +298,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Method for calling a Fuel API using PATCH.</p>
+</div></span>
   
 </li>
 
@@ -306,7 +322,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Method for calling a Fuel API using POST.</p>
+</div></span>
   
 </li>
 
@@ -341,22 +359,87 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Complete the URL using the URL and properties passed</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>string</span>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>url          The resource URL for the REST API</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>Hash</span>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>url_properties 	The properties that is passed to do the REST GET operation</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        
+        <div class='inline'>
+<p>Returns the completed URL</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-66
-67
-68
-69
-70
-71
-72</pre>
+78
+79
+80
+81
+82
+83
+84</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/marketingcloudsdk/rest.rb', line 66</span>
+      <pre class="code"><span class="info file"># File 'lib/marketingcloudsdk/rest.rb', line 78</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_complete_url'>complete_url</span> <span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='id identifier rubyid_url_properties'>url_properties</span>
   <span class='id identifier rubyid_normalize_keys'>normalize_keys</span><span class='lparen'>(</span><span class='id identifier rubyid_url_properties'>url_properties</span><span class='rparen'>)</span>
@@ -379,25 +462,90 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Get the URL properties from the passed url &amp; properties</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>string</span>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>url          The resource URL for the REST API</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>Hash</span>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>properties 	The properties that is passed to do the REST GET operation</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        
+        <div class='inline'>
+<p>The Hash object of URL properties</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-55
-56
-57
-58
-59
-60
-61
-62
 63
-64</pre>
+64
+65
+66
+67
+68
+69
+70
+71
+72</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/marketingcloudsdk/rest.rb', line 55</span>
+      <pre class="code"><span class="info file"># File 'lib/marketingcloudsdk/rest.rb', line 63</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_get_url_properties'>get_url_properties</span> <span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='id identifier rubyid_properties'>properties</span>
   <span class='id identifier rubyid_url_property_names'>url_property_names</span> <span class='op'>=</span> <span class='id identifier rubyid_url'>url</span><span class='period'>.</span><span class='id identifier rubyid_scan'>scan</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>(%{(.+?)})</span><span class='regexp_end'>/</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_collect'>collect</span><span class='lbrace'>{</span><span class='op'>|</span><span class='id identifier rubyid_frmt'>frmt</span><span class='comma'>,</span> <span class='id identifier rubyid_name'>name</span><span class='op'>|</span> <span class='id identifier rubyid_name'>name</span><span class='rbrace'>}</span>
@@ -423,23 +571,72 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Normalize the keys passed</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>Hash</span>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>obj The Hash object which needs to be normalized</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        
+        <div class='inline'>
+<p>Returns the normalized Hash object</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-46
-47
-48
-49
 50
 51
 52
-53</pre>
+53
+54
+55
+56
+57</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/marketingcloudsdk/rest.rb', line 46</span>
+      <pre class="code"><span class="info file"># File 'lib/marketingcloudsdk/rest.rb', line 50</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_normalize_keys'>normalize_keys</span> <span class='id identifier rubyid_obj'>obj</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_obj'>obj</span> <span class='kw'>and</span> <span class='id identifier rubyid_obj'>obj</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span> <span class='const'>Hash</span>
@@ -463,20 +660,85 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Parse the URL and properties passed</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>string</span>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>url          The resource URL for the REST API</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>Hash</span>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>properties 	The properties that is passed to do the REST GET operation</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        
+        <div class='inline'>
+<p>Array of URL and properties passed</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-74
-75
-76
-77
-78</pre>
+90
+91
+92
+93
+94</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/marketingcloudsdk/rest.rb', line 74</span>
+      <pre class="code"><span class="info file"># File 'lib/marketingcloudsdk/rest.rb', line 90</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_parse_properties'>parse_properties</span> <span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='id identifier rubyid_properties'>properties</span>
   <span class='id identifier rubyid_url_properties'>url_properties</span> <span class='op'>=</span> <span class='id identifier rubyid_get_url_properties'>get_url_properties</span> <span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='id identifier rubyid_properties'>properties</span>
@@ -497,18 +759,47 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns the self object</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        
+        <div class='inline'>
+<p>the self object</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-42
 43
-44</pre>
+44
+45</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/marketingcloudsdk/rest.rb', line 42</span>
+      <pre class="code"><span class="info file"># File 'lib/marketingcloudsdk/rest.rb', line 43</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_rest_client'>rest_client</span>
   <span class='kw'>self</span>
@@ -527,19 +818,84 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Method for calling a Fuel API using DELETE</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>string</span>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>url          The resource URL for the REST API</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>Hash</span>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>properties 	The properties that is passed to do the REST DELETE operation</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        
+        <div class='inline'>
+<p>The REST DELETE response</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-85
-86
-87
-88</pre>
+109
+110
+111
+112</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/marketingcloudsdk/rest.rb', line 85</span>
+      <pre class="code"><span class="info file"># File 'lib/marketingcloudsdk/rest.rb', line 109</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_rest_delete'>rest_delete</span> <span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='id identifier rubyid_properties'>properties</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span>
   <span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='id identifier rubyid_properties'>properties</span> <span class='op'>=</span> <span class='id identifier rubyid_parse_properties'>parse_properties</span> <span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='id identifier rubyid_properties'>properties</span>
@@ -559,19 +915,84 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Method for calling a Fuel API using GET</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>string</span>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>url          The resource URL for the REST API</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>Hash</span>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>properties 	The properties that is passed to do the REST GET operation</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        
+        <div class='inline'>
+<p>The REST GET response</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-80
-81
-82
-83</pre>
+100
+101
+102
+103</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/marketingcloudsdk/rest.rb', line 80</span>
+      <pre class="code"><span class="info file"># File 'lib/marketingcloudsdk/rest.rb', line 100</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_rest_get'>rest_get</span> <span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='id identifier rubyid_properties'>properties</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span>
   <span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='id identifier rubyid_properties'>properties</span> <span class='op'>=</span> <span class='id identifier rubyid_parse_properties'>parse_properties</span> <span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='id identifier rubyid_properties'>properties</span>
@@ -591,20 +1012,85 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Method for calling a Fuel API using PATCH</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>string</span>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>url          The resource URL for the REST API</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>Hash</span>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>properties 	The properties that is passed to do the REST PATCH operation</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        
+        <div class='inline'>
+<p>The REST PATCH response</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-90
-91
-92
-93
-94</pre>
+118
+119
+120
+121
+122</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/marketingcloudsdk/rest.rb', line 90</span>
+      <pre class="code"><span class="info file"># File 'lib/marketingcloudsdk/rest.rb', line 118</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_rest_patch'>rest_patch</span> <span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='id identifier rubyid_properties'>properties</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span>
   <span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='id identifier rubyid_payload'>payload</span> <span class='op'>=</span> <span class='id identifier rubyid_parse_properties'>parse_properties</span> <span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='id identifier rubyid_properties'>properties</span>
@@ -625,20 +1111,85 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Method for calling a Fuel API using POST</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>string</span>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>url          The resource URL for the REST API</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>Hash</span>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>properties 	The properties that is passed to do the REST POST operation</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        
+        <div class='inline'>
+<p>The REST POST response</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-96
-97
-98
-99
-100</pre>
+128
+129
+130
+131
+132</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/marketingcloudsdk/rest.rb', line 96</span>
+      <pre class="code"><span class="info file"># File 'lib/marketingcloudsdk/rest.rb', line 128</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_rest_post'>rest_post</span> <span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='id identifier rubyid_properties'>properties</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span>
   <span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='id identifier rubyid_payload'>payload</span> <span class='op'>=</span> <span class='id identifier rubyid_parse_properties'>parse_properties</span> <span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='id identifier rubyid_properties'>properties</span>
@@ -655,7 +1206,7 @@
 </div>
 
       <div id="footer">
-  Generated on Tue Nov 28 15:19:48 2017 by
+  Generated on Thu Nov 30 12:33:00 2017 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.12 (ruby-2.2.5).
 </div>

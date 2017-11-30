@@ -513,7 +513,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Add subscriber to list.</p>
+</div></span>
   
 </li>
 
@@ -535,7 +537,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Create an import definition and start the import process.</p>
+</div></span>
   
 </li>
 
@@ -557,7 +561,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Create an import definition and start the import process.</p>
+</div></span>
   
 </li>
 
@@ -579,7 +585,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Create one or more content areas.</p>
+</div></span>
   
 </li>
 
@@ -601,7 +609,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Create a new data extension based on the definitions passed.</p>
+</div></span>
   
 </li>
 
@@ -623,7 +633,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Create a profile attribute.</p>
+</div></span>
   
 </li>
 
@@ -648,7 +660,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>A new instance of Client.</p>
+<p>Initializes a new instance of the Client class.</p>
 </div></span>
   
 </li>
@@ -671,7 +683,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Custom code to assign jwt.</p>
+</div></span>
   
 </li>
 
@@ -693,7 +707,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Gets the refresh token using the authentication URL.</p>
+</div></span>
   
 </li>
 
@@ -737,7 +753,10 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Create an email send definition, send the email based on the definition and
+delete the definition.</p>
+</div></span>
   
 </li>
 
@@ -759,7 +778,10 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Create an email send definition, send the email based on the definition and
+delete the definition.</p>
+</div></span>
   
 </li>
 
@@ -781,7 +803,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Starts an send operation for the TriggerredSend records.</p>
+</div></span>
   
 </li>
 
@@ -838,13 +862,50 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Returns a new instance of Client</p>
+<p>Initializes a new instance of the Client class. Logging is enabled when the
+value is set to true and disabled when set to false.</p>
 
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>Boolean</span>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>debug Flag to indicate whether debug information needs to be logged.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>Hash</span>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>params Hash of settings as string.&lt;/br&gt;</p>
+</div>
+      
+    </li>
+  
+</ul>
+
 
 </div><table class="source_code">
   <tr>
@@ -852,12 +913,6 @@
       <pre class="lines">
 
 
-106
-107
-108
-109
-110
-111
 112
 113
 114
@@ -871,10 +926,16 @@
 122
 123
 124
-125</pre>
+125
+126
+127
+128
+129
+130
+131</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/marketingcloudsdk/client.rb', line 106</span>
+      <pre class="code"><span class="info file"># File 'lib/marketingcloudsdk/client.rb', line 112</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_params'>params</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span> <span class='id identifier rubyid_debug'>debug</span><span class='op'>=</span><span class='kw'>false</span><span class='rparen'>)</span>
 	<span class='ivar'>@refresh_mutex</span> <span class='op'>=</span> <span class='const'>Mutex</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
@@ -1481,30 +1542,111 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Add subscriber to list.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>string</span>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>email Email address of the subscriber</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>Array</span>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>ids Array of list id to which the subscriber is added</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>string</span>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>subscriber_key Newly added subscriber key</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        
+        <div class='inline'>
+<p>The post response object</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-162
-163
-164
-165
-166
-167
-168
-169
-170
-171
-172
-173
-174
-175
-176</pre>
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/marketingcloudsdk/client.rb', line 162</span>
+      <pre class="code"><span class="info file"># File 'lib/marketingcloudsdk/client.rb', line 176</span>
 
 <span class='kw'>def</span> <span class='const'>AddSubscriberToList</span><span class='lparen'>(</span><span class='id identifier rubyid_email'>email</span><span class='comma'>,</span> <span class='id identifier rubyid_ids'>ids</span><span class='comma'>,</span> <span class='id identifier rubyid_subscriber_key'>subscriber_key</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
 	<span class='id identifier rubyid_s'>s</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../MarketingCloudSDK.html" title="MarketingCloudSDK (module)">MarketingCloudSDK</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Subscriber.html" title="MarketingCloudSDK::Subscriber (class)">Subscriber</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
@@ -1535,40 +1677,122 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Create an import definition and start the import process</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>string</span>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>dataExtensionCustomerKey Data extension customer key. Used as the
+destination object identifier.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>string</span>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>fileName Name of the file to be imported</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>Boolean</span>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>overwrite Flag to indicate to overwrite the uploaded file</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        
+        <div class='inline'>
+<p>Returns the import process result</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-256
-257
-258
-259
-260
-261
-262
-263
-264
-265
-266
-267
-268
-269
-270
-271
-272
-273
-274
-275
-276
-277
-278
-279
-280</pre>
+298
+299
+300
+301
+302
+303
+304
+305
+306
+307
+308
+309
+310
+311
+312
+313
+314
+315
+316
+317
+318
+319
+320
+321
+322</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/marketingcloudsdk/client.rb', line 256</span>
+      <pre class="code"><span class="info file"># File 'lib/marketingcloudsdk/client.rb', line 298</span>
 
 <span class='kw'>def</span> <span class='const'>CreateAndStartDataExtensionImport</span><span class='lparen'>(</span><span class='id identifier rubyid_dataExtensionCustomerKey'>dataExtensionCustomerKey</span><span class='comma'>,</span> <span class='id identifier rubyid_fileName'>fileName</span><span class='comma'>,</span> <span class='id identifier rubyid_overwrite'>overwrite</span><span class='rparen'>)</span>
 	<span class='id identifier rubyid_import'>import</span> <span class='op'>=</span> <span class='const'>ET_Import</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> 
@@ -1609,36 +1833,101 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Create an import definition and start the import process</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>string</span>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>listId List identifier. Used as the destination object identifier.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>string</span>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>fileName Name of the file to be imported</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        
+        <div class='inline'>
+<p>Returns the import process result</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-234
-235
-236
-237
-238
-239
-240
-241
-242
-243
-244
-245
-246
-247
-248
-249
-250
-251
-252
-253
-254</pre>
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/marketingcloudsdk/client.rb', line 234</span>
+      <pre class="code"><span class="info file"># File 'lib/marketingcloudsdk/client.rb', line 271</span>
 
 <span class='kw'>def</span> <span class='const'>CreateAndStartListImport</span><span class='lparen'>(</span><span class='id identifier rubyid_listId'>listId</span><span class='comma'>,</span><span class='id identifier rubyid_fileName'>fileName</span><span class='rparen'>)</span>
 	<span class='id identifier rubyid_import'>import</span> <span class='op'>=</span> <span class='const'>ET_Import</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> 
@@ -1675,22 +1964,71 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Create one or more content areas</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>array</span>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>$arrayOfContentAreas Content areas properties as an array</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        
+        <div class='inline'>
+<p>the post response object</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-289
-290
-291
-292
-293
-294
-295</pre>
+337
+338
+339
+340
+341
+342
+343</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/marketingcloudsdk/client.rb', line 289</span>
+      <pre class="code"><span class="info file"># File 'lib/marketingcloudsdk/client.rb', line 337</span>
 
 <span class='kw'>def</span> <span class='const'>CreateContentAreas</span><span class='lparen'>(</span><span class='id identifier rubyid_arrayOfContentAreas'>arrayOfContentAreas</span><span class='rparen'>)</span>
 	<span class='id identifier rubyid_postC'>postC</span> <span class='op'>=</span> <span class='const'>ET_ContentArea</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
@@ -1713,21 +2051,70 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Create a new data extension based on the definitions passed</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>array</span>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>definitions Data extension definition properties as an array</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        
+        <div class='inline'>
+<p>mixed post response object</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-178
-179
-180
-181
-182
-183</pre>
+195
+196
+197
+198
+199
+200</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/marketingcloudsdk/client.rb', line 178</span>
+      <pre class="code"><span class="info file"># File 'lib/marketingcloudsdk/client.rb', line 195</span>
 
 <span class='kw'>def</span> <span class='const'>CreateDataExtensions</span><span class='lparen'>(</span><span class='id identifier rubyid_definitions'>definitions</span><span class='rparen'>)</span>
 	<span class='id identifier rubyid_de'>de</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../MarketingCloudSDK.html" title="MarketingCloudSDK (module)">MarketingCloudSDK</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="DataExtension.html" title="MarketingCloudSDK::DataExtension (class)">DataExtension</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
@@ -1749,21 +2136,70 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Create a profile attribute</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>array</span>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>$allAttributes Profile attribute properties as an array.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        
+        <div class='inline'>
+<p>the post response object</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-282
-283
-284
-285
-286
-287</pre>
+327
+328
+329
+330
+331
+332</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/marketingcloudsdk/client.rb', line 282</span>
+      <pre class="code"><span class="info file"># File 'lib/marketingcloudsdk/client.rb', line 327</span>
 
 <span class='kw'>def</span> <span class='const'>CreateProfileAttributes</span><span class='lparen'>(</span><span class='id identifier rubyid_allAttributes'>allAttributes</span><span class='rparen'>)</span>
 	<span class='id identifier rubyid_attrs'>attrs</span> <span class='op'>=</span> <span class='const'>ET_ProfileAttribute</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> 
@@ -1785,14 +2221,43 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Custom code to assign jwt</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>string</span>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>encoded_jwt The encoded jwt value</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-94
-95
 96
 97
 98
@@ -1801,10 +2266,12 @@
 101
 102
 103
-104</pre>
+104
+105
+106</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/marketingcloudsdk/client.rb', line 94</span>
+      <pre class="code"><span class="info file"># File 'lib/marketingcloudsdk/client.rb', line 96</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_jwt='>jwt=</span> <span class='id identifier rubyid_encoded_jwt'>encoded_jwt</span>
 	<span class='id identifier rubyid_raise'>raise</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Require app signature to decode JWT</span><span class='tstring_end'>&#39;</span></span> <span class='kw'>unless</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_signature'>signature</span>
@@ -1831,21 +2298,61 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Gets the refresh token using the authentication URL.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>Boolean</span>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>force Flag to indicate a force refresh of authentication toekn.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        
+        <div class='inline'>
+<p>Boolean returns true if the new access token is found, false otherwise.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-127
-128
-129
-130
-131
-132
-133
-134
-135
 136
 137
 138
@@ -1866,10 +2373,19 @@
 153
 154
 155
-156</pre>
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/marketingcloudsdk/client.rb', line 127</span>
+      <pre class="code"><span class="info file"># File 'lib/marketingcloudsdk/client.rb', line 136</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_refresh'>refresh</span> <span class='id identifier rubyid_force'>force</span><span class='op'>=</span><span class='kw'>false</span>
 	<span class='ivar'>@refresh_mutex</span><span class='period'>.</span><span class='id identifier rubyid_synchronize'>synchronize</span> <span class='kw'>do</span>
@@ -1921,12 +2437,12 @@
       <pre class="lines">
 
 
-158
-159
-160</pre>
+167
+168
+169</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/marketingcloudsdk/client.rb', line 158</span>
+      <pre class="code"><span class="info file"># File 'lib/marketingcloudsdk/client.rb', line 167</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_refresh!'>refresh!</span>
 	<span class='id identifier rubyid_refresh'>refresh</span> <span class='kw'>true</span>
@@ -1945,35 +2461,117 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Create an email send definition, send the email based on the definition and
+delete the definition.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>string</span>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>emailID Email identifier for which the email is sent</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>string</span>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>sendableDataExtensionCustomerKey Sendable data extension customer key</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>string</span>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>sendClassficationCustomerKey Send classification customer key</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        
+        <div class='inline'>
+<p>The send reponse object</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-214
-215
-216
-217
-218
-219
-220
-221
-222
-223
-224
-225
-226
-227
-228
-229
-230
-231
-232
-233</pre>
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/marketingcloudsdk/client.rb', line 214</span>
+      <pre class="code"><span class="info file"># File 'lib/marketingcloudsdk/client.rb', line 246</span>
 
 <span class='kw'>def</span> <span class='const'>SendEmailToDataExtension</span><span class='lparen'>(</span><span class='id identifier rubyid_emailID'>emailID</span><span class='comma'>,</span> <span class='id identifier rubyid_sendableDataExtensionCustomerKey'>sendableDataExtensionCustomerKey</span><span class='comma'>,</span> <span class='id identifier rubyid_sendClassificationCustomerKey'>sendClassificationCustomerKey</span><span class='rparen'>)</span>
 	<span class='id identifier rubyid_email'>email</span> <span class='op'>=</span> <span class='const'>ET_Email</span><span class='op'>::</span><span class='const'>SendDefinition</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> 
@@ -2009,35 +2607,117 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Create an email send definition, send the email based on the definition and
+delete the definition.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>string</span>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>emailID Email identifier for which the email is sent</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>string</span>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>listID Send definition list identifier</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>string</span>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>sendClassficationCustomerKey Send classification customer key</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        
+        <div class='inline'>
+<p>The send reponse object</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-193
-194
-195
-196
-197
-198
-199
-200
-201
-202
-203
-204
-205
-206
-207
-208
-209
-210
-211
-212</pre>
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/marketingcloudsdk/client.rb', line 193</span>
+      <pre class="code"><span class="info file"># File 'lib/marketingcloudsdk/client.rb', line 220</span>
 
 <span class='kw'>def</span> <span class='const'>SendEmailToList</span><span class='lparen'>(</span><span class='id identifier rubyid_emailID'>emailID</span><span class='comma'>,</span> <span class='id identifier rubyid_listID'>listID</span><span class='comma'>,</span> <span class='id identifier rubyid_sendClassificationCustomerKey'>sendClassificationCustomerKey</span><span class='rparen'>)</span>
 	<span class='id identifier rubyid_email'>email</span> <span class='op'>=</span> <span class='const'>ET_Email</span><span class='op'>::</span><span class='const'>SendDefinition</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> 
@@ -2073,24 +2753,73 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Starts an send operation for the TriggerredSend records</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>array</span>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>arrayOfTriggeredRecords Array of TriggeredSend records</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        
+        <div class='inline'>
+<p>The Send reponse object</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-184
-185
-186
-187
-188
-189
-190
-191
-192</pre>
+205
+206
+207
+208
+209
+210
+211
+212
+213</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/marketingcloudsdk/client.rb', line 184</span>
+      <pre class="code"><span class="info file"># File 'lib/marketingcloudsdk/client.rb', line 205</span>
 
 <span class='kw'>def</span> <span class='const'>SendTriggeredSends</span><span class='lparen'>(</span><span class='id identifier rubyid_arrayOfTriggeredRecords'>arrayOfTriggeredRecords</span><span class='rparen'>)</span>
 	<span class='id identifier rubyid_sendTS'>sendTS</span> <span class='op'>=</span> <span class='const'>ET_TriggeredSend</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
@@ -2111,7 +2840,7 @@
 </div>
 
       <div id="footer">
-  Generated on Tue Nov 28 15:19:48 2017 by
+  Generated on Thu Nov 30 12:33:00 2017 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.12 (ruby-2.2.5).
 </div>
