@@ -18,6 +18,7 @@ _yardoc
 sample.rb
 ExactTargetWSDL.xml
 config.yaml
+.idea/
 /objsamples/config.yaml
 /objsamples/AllTest.bat
 samples/sample_helper.rb

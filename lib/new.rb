@@ -289,11 +289,10 @@ module MarketingCloudSDK
     end
 
     # Add subscriber to list.
-    #
     # @param string emailAddress Email address of the subscriber
     # @param Array listIDs Array of list id to which the subscriber is added
     # @param string subscriberKey Newly added subscriber key
-    # @return mixed post response object
+    # @return The post response object
     def AddSubscriberToList(emailAddress, listIDs, subscriberKey = nil)
       newSub = ET_Subscriber.new
       newSub.authStub = self

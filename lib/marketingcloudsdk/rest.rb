@@ -39,10 +39,14 @@ module MarketingCloudSDK
 
     include MarketingCloudSDK::Targeting
 
+    # @return the self object
     def rest_client
       self
     end
 
+    # Normalize the keys passed
+    # @param Hash obj The Hash object which needs to be normalized
+    # @return Returns the normalized Hash object
     def normalize_keys obj
       if obj and obj.is_a? Hash
         obj.keys.each do |k|
@@ -52,6 +56,10 @@ module MarketingCloudSDK
       obj
     end
 
+    # Get the URL properties from the passed url & properties
+    # @param string      url          The resource URL for the REST API
+    # @param Hash        properties 	The properties that is passed to do the REST GET operation
+    # @return The Hash object of URL properties    
     def get_url_properties url, properties
       url_property_names = url.scan(/(%{(.+?)})/).collect{|frmt, name| name}
       url_properties = {}
@@ -63,6 +71,10 @@ module MarketingCloudSDK
       url_properties
     end
 
+    # Complete the URL using the URL and properties passed
+    # @param string      url          The resource URL for the REST API
+    # @param Hash        url_properties 	The properties that is passed to do the REST GET operation
+    # @return Returns the completed URL
     def complete_url url, url_properties
       normalize_keys(url_properties)
       url = url % url_properties if url_properties
@@ -71,28 +83,48 @@ module MarketingCloudSDK
       raise "#{ex.message} to complete #{url}"
     end
 
+    # Parse the URL and properties passed
+    # @param string      url          The resource URL for the REST API
+    # @param Hash        properties 	The properties that is passed to do the REST GET operation
+    # @return Array of URL and properties passed
     def parse_properties url, properties
       url_properties = get_url_properties url, properties
       url = complete_url url, url_properties
       [url, properties]
     end
 
+    # Method for calling a Fuel API using GET
+    # @param string      url          The resource URL for the REST API
+    # @param Hash        properties 	The properties that is passed to do the REST GET operation
+    # @return                         The REST GET response
     def rest_get url, properties={}
       url, properties = parse_properties url, properties
       rest_request :get, url, {'params' => properties}
     end
 
+    # Method for calling a Fuel API using DELETE
+    # @param string      url          The resource URL for the REST API
+    # @param Hash        properties 	The properties that is passed to do the REST DELETE operation
+    # @return                         The REST DELETE response
     def rest_delete url, properties={}
       url, properties = parse_properties url, properties
       rest_request :delete, url
     end
 
+    # Method for calling a Fuel API using PATCH
+    # @param string      url          The resource URL for the REST API
+    # @param Hash        properties 	The properties that is passed to do the REST PATCH operation
+    # @return                         The REST PATCH response
     def rest_patch url, properties={}
       url, payload = parse_properties url, properties
       rest_request :patch, url, {'data' => payload,
         'content_type' => 'application/json'}
     end
 
+    # Method for calling a Fuel API using POST
+    # @param string      url          The resource URL for the REST API
+    # @param Hash        properties 	The properties that is passed to do the REST POST operation
+    # @return                         The REST POST response
     def rest_post url, properties={}
       url, payload = parse_properties url, properties
       rest_request :post, url, {'data' => payload,

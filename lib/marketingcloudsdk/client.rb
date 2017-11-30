@@ -91,6 +91,8 @@ module MarketingCloudSDK
 	include MarketingCloudSDK::Soap
 	include MarketingCloudSDK::Rest
 
+		# Custom code to assign jwt
+		# @param string encoded_jwt The encoded jwt value
 		def jwt= encoded_jwt
 			raise 'Require app signature to decode JWT' unless self.signature
 			decoded_jwt = JWT.decode(encoded_jwt, self.signature, true)
@@ -128,6 +130,9 @@ module MarketingCloudSDK
 			self.wsdl = params["defaultwsdl"] if params["defaultwsdl"]
 		end
 
+		# Gets the refresh token using the authentication URL.
+		# @param Boolean force Flag to indicate a force refresh of authentication toekn.
+		# @return Boolean returns true if the new access token is found, false otherwise.
 		def refresh force=false
 			@refresh_mutex.synchronize do
 				raise 'Require Client Id and Client Secret to refresh tokens' unless (id && secret)
@@ -163,6 +168,11 @@ module MarketingCloudSDK
 			refresh true
 		end
 
+		# Add subscriber to list.
+		# @param string email Email address of the subscriber
+		# @param Array ids Array of list id to which the subscriber is added
+		# @param string subscriber_key Newly added subscriber key
+		# @return The post response object
 		def AddSubscriberToList(email, ids, subscriber_key = nil)
 			s = MarketingCloudSDK::Subscriber.new
 			s.client = self
@@ -179,12 +189,19 @@ module MarketingCloudSDK
 			rsp
 		end
 
+		# Create a new data extension based on the definitions passed
+		# @param array definitions Data extension definition properties as an array
+		# @return mixed post response object
 		def CreateDataExtensions(definitions)
 			de = MarketingCloudSDK::DataExtension.new
 			de.client = self
 			de.properties = definitions
 			de.post
 		end
+
+		# Starts an send operation for the TriggerredSend records
+		# @param array arrayOfTriggeredRecords Array of TriggeredSend records
+		# @return The Send reponse object
 		def SendTriggeredSends(arrayOfTriggeredRecords)
 			sendTS = ET_TriggeredSend.new
 			sendTS.authStub = self
@@ -194,6 +211,12 @@ module MarketingCloudSDK
 			
 			return sendResponse
 		end
+
+		# Create an email send definition, send the email based on the definition and delete the definition.
+		# @param string emailID Email identifier for which the email is sent
+		# @param string listID Send definition list identifier
+		# @param string sendClassficationCustomerKey Send classification customer key 
+		# @return The send reponse object
 		def SendEmailToList(emailID, listID, sendClassificationCustomerKey)
 			email = ET_Email::SendDefinition.new 
 			email.properties = {"Name"=>SecureRandom.uuid, "CustomerKey"=>SecureRandom.uuid, "Description"=>"Created with RubySDK"} 
@@ -214,7 +237,12 @@ module MarketingCloudSDK
 				raise "Unable to create send definition due to: #{result.results[0][:status_message]}"
 			end 
 		end 
-			
+
+		# Create an email send definition, send the email based on the definition and delete the definition.
+		# @param string emailID Email identifier for which the email is sent
+		# @param string sendableDataExtensionCustomerKey Sendable data extension customer key 
+		# @param string sendClassficationCustomerKey Send classification customer key 
+		# @return The send reponse object
 		def SendEmailToDataExtension(emailID, sendableDataExtensionCustomerKey, sendClassificationCustomerKey)
 			email = ET_Email::SendDefinition.new 
 			email.properties = {"Name"=>SecureRandom.uuid, "CustomerKey"=>SecureRandom.uuid, "Description"=>"Created with RubySDK"} 
@@ -235,6 +263,11 @@ module MarketingCloudSDK
 				raise "Unable to create send definition due to: #{result.results[0][:status_message]}"
 			end 
 		end
+
+		# Create an import definition and start the import process
+		# @param string listId List identifier. Used as the destination object identifier.
+		# @param string fileName Name of the file to be imported
+		# @return Returns the import process result
 		def CreateAndStartListImport(listId,fileName)
 			import = ET_Import.new 
 			import.authStub = self
@@ -256,7 +289,12 @@ module MarketingCloudSDK
 				raise "Unable to create import definition due to: #{result.results[0][:status_message]}"
 			end 
 		end 
-			
+
+		# Create an import definition and start the import process
+		# @param string dataExtensionCustomerKey Data extension customer key. Used as the destination object identifier.
+		# @param string fileName Name of the file to be imported
+		# @param Boolean overwrite Flag to indicate to overwrite the uploaded file
+		# @return Returns the import process result
 		def CreateAndStartDataExtensionImport(dataExtensionCustomerKey, fileName, overwrite)
 			import = ET_Import.new 
 			import.authStub = self
@@ -283,13 +321,19 @@ module MarketingCloudSDK
 			end 
 		end 
 			
+		# Create a profile attribute
+		# @param array $allAttributes Profile attribute properties as an array.
+		# @return the post response object
 		def CreateProfileAttributes(allAttributes)
 			attrs = ET_ProfileAttribute.new 
 			attrs.authStub = self
 			attrs.properties = allAttributes
 			return attrs.post
 		end
-		
+
+		# Create one or more content areas
+		# @param array $arrayOfContentAreas Content areas properties as an array
+		# @return the post response object
 		def CreateContentAreas(arrayOfContentAreas)
 			postC = ET_ContentArea.new
 			postC.authStub = self
