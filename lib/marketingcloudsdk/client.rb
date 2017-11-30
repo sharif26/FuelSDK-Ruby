@@ -37,7 +37,7 @@ USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 require 'securerandom'
 module MarketingCloudSDK
-	# Represents Response from API call for Salesforce Marketing Cloud
+	# Represents Response from API call using Salesforce Marketing Cloud
 	class Response
 		# not doing accessor so user, can't update these values from response.
 		# You will see in the code some of these

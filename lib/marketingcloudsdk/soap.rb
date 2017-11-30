@@ -36,9 +36,10 @@ USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 require 'savon'
 module MarketingCloudSDK
-	
+	# Represents SOAP Response from API call using Salesforce Marketing Cloud	
 	class SoapResponse < MarketingCloudSDK::Response
-
+		# Continue if there is more data available in the response
+		# @return The continued SOAP response
 		def continue
 			rsp = nil
 			if more?
@@ -118,6 +119,7 @@ module MarketingCloudSDK
 
 		include MarketingCloudSDK::Targeting
 
+		# Method to support legacy SOAP header
 		def header
 			raise 'Require legacy token for soap header' unless internal_token
 			{
