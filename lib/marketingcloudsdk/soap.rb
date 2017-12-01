@@ -82,10 +82,11 @@ module MarketingCloudSDK
 		end
 	end
 
+	# Represents Describe SOAP Response from API call using Salesforce Marketing Cloud	
 	class DescribeResponse < SoapResponse
 		attr_reader :properties, :retrievable, :updatable, :required, :extended, :viewable, :editable
+		
 		private
-
 		def unpack_rslts raw
 			@retrievable, @updatable, @required, @properties, @extended, @viewable, @editable = [], [], [], [], [], [], [], []
 			definition = raw.body[raw.body.keys.first][:object_definition]
@@ -128,14 +129,17 @@ module MarketingCloudSDK
 			}
 		end
 
+		# Assigns the debug property, by default false
 		def debug
 			@debug ||= false
 		end
 
+		# Assigns the wsdl property with default URL
 		def wsdl
 			@wsdl ||= 'https://webservice.exacttarget.com/etframework.wsdl'
 		end
 
+		# Initialize the Savon soap client
 		def soap_client
 			self.refresh
 			@soap_client = Savon.client(
@@ -161,6 +165,11 @@ module MarketingCloudSDK
 			soap_request :describe, message
 		end
 
+		# Executes the SOAP PERFORM operation
+		# @param String object_type 	The type of the object, e.g. "ImportDefinition", "DataExtension", etc
+		# @param String action 			The action to perform, e.g. "create", "delete", "update", etc
+		# @param Hash 	properties		The properties is passed to do the SOAP PERFORM operation e.g. {'id' => '', 'key' => ''}
+		# @return  The response after doing the SOAP PERFORM operation
 		def soap_perform object_type, action, properties
 			message = {}
 			message['Action'] = action
@@ -170,7 +179,11 @@ module MarketingCloudSDK
 			soap_request :perform, message
 		end
 
-
+		# Executes the SOAP Configurations operation
+		# @param String object_type 	The type of the object, e.g. "PropertyDefinition", "Role", etc
+		# @param String action 			The action to configure, e.g. "create", "delete", "update", etc
+		# @param Hash 	properties		The properties is passed to do the SOAP Configurations operation e.g. {'id' => '', 'key' => ''}
+		# @return  The response after doing the SOAP Configurations operation
 		def soap_configure  object_type, action, properties
 			message = {}
 			message['Action'] = action
@@ -188,6 +201,11 @@ module MarketingCloudSDK
 			soap_request :configure, message
 		end
 
+		# Executes the SOAP Retrieve operation
+		# @param String object_type 	The type of the object, e.g. "Email", "TriggeredSend", etc
+		# @param Hash filter 			The filter to get, e.g. {"Property"=>"", "SimpleOperator"=>"","Value"=>""}
+		# @param Hash 	properties		The properties is passed to do the SOAP Retrieve operation e.g. {'id' => '', 'key' => ''}
+		# @return  The response after doing the SOAP GET operation
 		def soap_get object_type, properties=nil, filter=nil
 			if properties.nil? or properties.empty?
 				rsp = soap_describe object_type
@@ -221,24 +239,39 @@ module MarketingCloudSDK
 			soap_request :retrieve, message
 		end
 
+		# Executes the SOAP POST operation
+		# @param String object_type 	The type of the object, e.g. "Email", "TriggeredSend", etc
+		# @param Hash 	properties		The properties is passed to do the SOAP POST operation e.g. {'id' => '', 'key' => ''}
+		# @return  The response after doing the SOAP POST operation
 		def soap_post object_type, properties
 			soap_cud :create, object_type, properties
 		end
 
+		# Executes the SOAP PATCH operation
+		# @param String object_type 	The type of the object, e.g. "Email", "TriggeredSend", etc
+		# @param Hash 	properties		The properties is passed to do the SOAP PATCH operation e.g. {'id' => '', 'key' => ''}
+		# @return  The response after doing the SOAP PATCH operation
 		def soap_patch object_type, properties
 			soap_cud :update, object_type, properties
 		end
 
+		# Executes the SOAP DELETE operation
+		# @param String object_type 	The type of the object, e.g. "Email", "TriggeredSend", etc
+		# @param Hash 	properties		The properties is passed to do the SOAP DELETE operation e.g. {'id' => '', 'key' => ''}
+		# @return  The response after doing the SOAP DELETE operation
 		def soap_delete object_type, properties
 			soap_cud :delete, object_type, properties
 		end
 
+		# Executes the SOAP PUT operation
+		# @param String object_type 	The type of the object, e.g. "Email", "TriggeredSend", etc
+		# @param Hash 	properties		The properties is passed to do the SOAP PUT operation e.g. {'id' => '', 'key' => ''}
+		# @return  The response after doing the SOAP PUT operation
 		def soap_put object_type, properties
 			soap_cud :update, object_type, properties, true
 		end
 
 		private
-
 		def soap_cud action, object_type, properties, upsert=nil
 			# get a list of attributes so we can seperate
 			# them from standard object properties
